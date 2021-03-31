@@ -1,0 +1,6 @@
+/* Command to create the SQL table */ 
+CREATE TABLE artist (
+pk_artist_id INT(6),
+artist_name VARCHAR(30) NOT NULL,
+artist_symbol VARCHAR(30) NOT NULL
+)
