@@ -28,7 +28,7 @@ git init
 git clone https://github.com/fsavundra/CloudProject
 
 # Create a new working directory
-cd cloud_computing
+cd CloudProject
 
 # Build the doker image
 sudo docker build -t fsavundra/cloudproject .
@@ -40,7 +40,7 @@ sudo docker run -p 80:80 fsavundra/cloudproject
 sudo docker images
 
 # Tag docker image correctly
-sudo docker tag ac9895a6e7a4 fsavundra/cloudproject
+sudo docker tag ......... fsavundra/cloudproject
 
 # Docker Login
 sudo docker login
@@ -49,7 +49,7 @@ sudo docker login
 sudo docker push fsavundra/cloudproject
 
 # Start the container from image
-sudo docker container run -d -it --name investment fsavundra/cloudproject
+sudo docker container run -d -it --name ....... fsavundra/cloudproject
 
 # Install Kubernetes
 sudo apt update -y
@@ -68,7 +68,7 @@ metadata:
 spec:
    containers:
    - name: investment-container01
-     image: guypwhunt1992/investment_app:v13
+     image: fsavundra/cloudproject
      ports:
      - containerPort: 6379
 
@@ -79,7 +79,7 @@ spec:
 sudo microk8s kubectl get all
 
 # Create a deployment
-sudo microk8s kubectl create deployment investment --image=guypwhunt1992/investment_app:v13 --port=80
+sudo microk8s kubectl create deployment investment --image=fsavundra/cloudproject --port=80
 
 # Create a load balancer
 sudo microk8s kubectl expose deployment investment --type=LoadBalancer --port 80 --target-port 80
