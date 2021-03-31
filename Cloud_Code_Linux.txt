@@ -93,7 +93,7 @@ sudo microk8s kubectl delete service investment
 rm -r cloud_computing
 
 
-sudo microk8s kubectl get pods -l app=investment
+sudo microk8s kubectl get pods -l app=myapp
 sudo microk8s kubectl get pods -l app=hostnames \
     -o go-template='{{range .items}}{{.status.podIP}}{{"\n"}}{{end}}'
 	
