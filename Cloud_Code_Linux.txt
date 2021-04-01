@@ -31,25 +31,25 @@ git clone https://github.com/fsavundra/CloudProject
 cd CloudProject
 
 # Build the doker image
-sudo docker build -t fsavundra/cloudproject .
+sudo docker build -t fsavundra/cloudproject:v1 .
 	
 # Run the docker image
-sudo docker run -p 80:80 fsavundra/cloudproject
+sudo docker run -p 80:80 fsavundra/cloudproject:v1
 
 # Find docker image id
 sudo docker images
 
 # Tag docker image correctly
-sudo docker tag ......... fsavundra/cloudproject
+sudo docker tag ......... fsavundra/cloudproject:v1
 
 # Docker Login
 sudo docker login
 
 # Push image to registery
-sudo docker push fsavundra/cloudproject
+sudo docker push fsavundra/cloudproject:v1
 
 # Start the container from image
-sudo docker container run -d -it --name ....... fsavundra/cloudproject
+sudo docker container run -d -it --name myapp fsavundra/cloudproject:v1
 
 # Install Kubernetes
 sudo apt update -y
@@ -64,32 +64,26 @@ sudo nano create-myapp.yml
 apiVersion: v1
 kind: 
 metadata:
-   name: 
+   name: myapp
 spec:
    containers:
-   - name: 
+   - name: myapp-container01
      image: fsavundra/cloudproject
      ports:
      - containerPort: 6379
 
-# Create POD from Manifest file
-# sudo microk8s kubectl create -f create-myapp.yml
-
-# Check it is running
-sudo microk8s kubectl get all
-
 # Create a deployment
-sudo microk8s kubectl create deployment investment --image=fsavundra/cloudproject --port=80
+sudo microk8s kubectl create deployment myapp --image=fsavundra/cloudproject:v1 --port=80
 
 # Create a load balancer
-sudo microk8s kubectl expose deployment investment --type=LoadBalancer --port 80 --target-port 80
+sudo microk8s kubectl expose deployment myapp --type=LoadBalancer --port 80 --target-port 80
 
 # Scale the deployment
-sudo microk8s kubectl scale deployment investment --replicas=2
+sudo microk8s kubectl scale deployment myapp --replicas=3
 
 # Delete statments if needed
-sudo microk8s kubectl delete deployment investment
-sudo microk8s kubectl delete service investment
+sudo microk8s kubectl delete deployment myapp
+sudo microk8s kubectl delete service myapp
 rm -r cloud_computing
 
 
