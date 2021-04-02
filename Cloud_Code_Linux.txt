@@ -40,7 +40,7 @@ sudo docker run -p 80:80 fsavundra/cloudproject:v1
 sudo docker images
 
 # Tag docker image correctly
-sudo docker tag ......... fsavundra/cloudproject:v1
+sudo docker tag b13e9d8dbb82 fsavundra/cloudproject:v1
 
 # Docker Login
 sudo docker login
@@ -62,13 +62,13 @@ sudo nano create-myapp.yml
 
 # Add content to yaml file
 apiVersion: v1
-kind: 
+kind: Pod
 metadata:
    name: myapp
 spec:
    containers:
    - name: myapp-container01
-     image: fsavundra/cloudproject
+     image: fsavundra/cloudproject:v1
      ports:
      - containerPort: 6379
 
